@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
 });
 
 // Conexão com MongoDB
-mongoose.connect(process.env.MONGODB_URI)
+mongoose.connect(process.env.DATABASE_URL)
   .then(() => {
     console.log('Banco de dados conectado com sucesso!');
     app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`));
