@@ -1,0 +1,308 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Rose:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'red rose', sans-serif;
+  background-color:#1F2937;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, #2c5364, #203a43, #0f2027);
+  padding: 0 50px;
+  z-index: 1000;
+}
+
+.logo {
+  height: 80px;
+}
+
+#logout {
+  background: #059669;
+  color: white;
+  font-size: 16px;
+  padding: 10px 15px;
+  border-radius: 30px;
+  border: none;
+  font-family: 'Red Rose', serif;
+  cursor: pointer;
+}
+
+.breadcrumb {
+  list-style: none;
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 125px;
+  margin-left: 75px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  color: #d6d6d6;
+}
+
+.breadcrumb li + li::before {
+  content: "›";
+  margin: 0 0.5rem;
+  color: #dfdfdf;
+}
+
+.breadcrumb li a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.breadcrumb li a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb li[aria-current="page"] {
+  color: #d8d7d7;
+  font-weight: 700;
+  cursor: default;
+}
+
+.task-inputs {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column; /* Stack input fields */
+  gap: 15px;
+  justify-content: center;
+  margin: 0; /* remover margem que atrapalha a centralização */
+}
+
+  .task-inputs input,
+  .task-inputs select {
+    background: #F1F1F1;
+    color: #000;
+    width: 400px;
+    font-size: 14px; /* Increase font size for better touch */
+    padding: 12px 15px; /* Increase padding for better touch */
+    border-radius: 20px;
+    border: 2px solid #000842;
+  }
+
+  .text-task {
+    font-size: 24px; /* Adjust title font size */
+    color: white;
+    text-align: center;
+    margin-top: 90px; /* Add margin from breadcrumbs if task-inputs are not present */
+  }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
+
+  #add-task {
+    width: 100%;
+    margin-right: 0; /* Remove specific margin */
+    font-size: 16px; /* Increase font size for better touch */
+    padding: 10px 15px;
+    margin-top: 10px; /* Add some space above the button */
+    background: #059669;
+    color: white;
+    border-radius: 30px;
+    border: none;
+    font-family: 'Red Rose', serif;
+    cursor: pointer;
+  }
+
+ul#tasks-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 30px;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: linear-gradient(135deg, #2c5364, #203a43, #0f2027);
+  padding: 10px;
+  border-top-left-radius: 45px;
+  border-top-right-radius: 45px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.footer-logo {
+  height: 80px;
+
+}
+
+.footer-line {
+  border: none;
+  border-top: 1px solid white;
+  width: 300px;
+  margin: 3px auto;
+}
+
+.credits {
+  margin-top: 10px;
+  font-family: 'Red Rose', serif;
+  font-size: 14px;
+  color: #ffffff;
+}
+
+    .popup {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: #059669;
+      color: white;
+      padding: 16px 24px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease, transform 0.3s ease;
+      z-index: 9999;
+      transform: translateY(-20px);
+    }
+
+    .popup.show {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+/* Responsive adjustments for general styles */
+@media (max-width: 768px) {
+.header {
+  display: flex;
+  justify-content: space-between; /* Logo à esquerda, botão à direita */
+  align-items: center;            /* Alinha verticalmente ao centro */
+  padding: 5px 20px;             /* Espaçamento interno */
+}
+
+.logo {
+  height: 60px;
+  margin-bottom: 0;               /* Removido para alinhamento horizontal */
+}
+
+#logout {
+  font-size: 14px;
+  padding: 8px 12px;
+}
+
+
+.breadcrumb {
+  margin-left: 170px;
+  margin-right: 20px;
+  font-size: 0.8rem;
+  margin-top: calc(80px + 20px + 10px + 10px + 20px); /* header height + its padding + logo margin + breadcrumb margin-top */
+  }
+
+.task-inputs {
+  flex-direction: column; /* Stack input fields */
+  gap: 10px;
+  width: 80%;
+  position: relative;
+  margin: 40px auto; /* Centraliza horizontalmente e adiciona margem vertical */
+  top: auto;
+  left: auto;
+  transform: none;
+}
+
+
+  .task-inputs input,
+  .task-inputs select {
+    width: 100%; /* Make inputs full width */
+    font-size: 16px; /* Increase font size for better touch */
+    padding: 12px 15px; /* Increase padding for better touch */
+  }
+
+  #add-task {
+    width: 100%;
+    margin-right: 0; /* Remove specific margin */
+    font-size: 16px; /* Increase font size for better touch */
+    padding: 12px 15px; /* Increase padding for better touch */
+    margin-top: 10px; /* Add some space above the button */
+  }
+
+  .text-task {
+    font-size: 24px; /* Adjust title font size */
+    margin-top: 120px; /* Add margin from breadcrumbs if task-inputs are not present */
+  }
+
+  .footer {
+    padding: 15px 10px; /* Adjust footer padding */
+    border-top-left-radius: 30px; /* Adjust footer radius */
+    border-top-right-radius: 30px;
+  }
+
+  .footer-logo {
+    height: 60px;
+  }
+
+  .footer-line {
+    width: 80%;
+    max-width: 250px;
+  }
+
+  .credits {
+    font-size: 12px;
+  }
+
+  .popup {
+    padding: 12px 18px;
+    font-size: 14px;
+    right: 10px;
+    top: 10px;
+    max-width: calc(100% - 20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .breadcrumb {
+    margin-top: calc(60px + 20px + 10px + 10px + 15px); /* header height + its padding + logo margin + breadcrumb margin-top */
+    font-size: 0.75rem;
+  }
+
+  .text-task {
+    font-size: 20px;
+  }
+
+  .task-inputs input,
+  .task-inputs select,
+  #add-task {
+    font-size: 15px;
+    padding: 10px 12px;
+  }
+}
+

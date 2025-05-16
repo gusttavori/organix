@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nova tarefa | Organix</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <img src="img/Organix.png" alt="Logo Organix" class="logo">
+      <button id="logout" aria-label="Sair da conta">Sair</button>
+    </header>
+    <nav id="breadcrumb" aria-label="Navegação estrutural"></nav>
+    <main>
+      <p class="text-task">Adicione uma nova tarefa</p>
+      <div class="task-inputs">
+        <label for="new-task" class="sr-only">Nome da tarefa</label>
+        <input type="text" id="new-task" placeholder="Nome da tarefa" required aria-required="true">
+        
+        <label for="new-task-desc" class="sr-only">Descrição da tarefa</label>
+        <input type="text" id="new-task-desc" placeholder="Descrição da tarefa">
+        
+        <label for="new-task-status" class="sr-only">Status da tarefa</label>
+        <select id="new-task-status" aria-label="Selecione o status da tarefa">
+          <option value="" selected disabled>Selecione um status</option> <!-- Changed value to empty and added disabled -->
+          <option value="Pendente">Pendente</option>
+          <option value="Em andamento">Em andamento</option>
+          <option value="Concluída">Concluída</option>
+        </select>
+        
+        <label for="new-task-priority" class="sr-only">Prioridade da tarefa</label>
+        <select id="new-task-priority" aria-label="Selecione a prioridade da tarefa">
+          <option value="" selected disabled>Selecione uma prioridade</option> <!-- Changed value to empty and added disabled -->
+          <option value="Alta">Alta</option>
+          <option value="Média">Média</option>
+          <option value="Baixa">Baixa</option>
+        </select>
+        <button id="add-task" aria-label="Adicionar nova tarefa">Adicionar</button>
+      </div>
+      <ul id="tasks-list" aria-label="Lista de tarefas"></ul>
+    </main>
+
+    <footer class="footer">
+      <img src="img/Organix.png" alt="Logo Organix no rodapé" class="footer-logo">
+      <hr class="footer-line" aria-hidden="true">
+      <p class="credits">© 2025 Organix. Desenvolvido por flxche.</p>
+    </footer>
+  </div>
+  <div id="popup" class="popup" role="alert" aria-live="assertive"></div>
+  <script src="js/tasks.js"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title> Login | Organix </title>
+  <link rel="stylesheet" href="css/login.css">
+  <link rel="icon" type="image/png" href="img/x-fav.png">
+</head>
+<body>
+
+  <div class="container" id="container">
+    <!-- Tela de Cadastro -->
+    <div class="form-container sign-up-container">
+      <form id="register-form">
+        <h1>Criar Conta</h1>
+        
+        <label for="register-name" class="sr-only">Nome</label>
+        <input type="text" id="register-name" name="name" placeholder="Nome" required aria-required="true" />
+        
+        <label for="register-email" class="sr-only">Email</label>
+        <input type="email" id="register-email" name="email" placeholder="Email" required aria-required="true" />
+        
+        <label for="register-password" class="sr-only">Senha</label>
+        <input type="password" id="register-password" name="password" placeholder="Senha" required aria-required="true" />
+        <button type="submit">Cadastre-se</button>
+      </form>
+    </div>
+
+    <!-- Tela de Login -->
+    <div class="form-container sign-in-container">
+      <form id="login-form">
+        <h1>Login</h1>
+      
+        <label for="login-email" class="sr-only">Email</label>
+        <input type="email" id="login-email" name="email" placeholder="Email" required aria-required="true" />
+        
+        <label for="login-password" class="sr-only">Senha</label>
+        <input type="password" id="login-password" name="password" placeholder="Senha" required aria-required="true" />
+        <button type="submit">Entrar</button>
+        <p class="mobile-message">Ainda não tem uma conta?</p>
+      </form>
+    </div>
+
+    <!-- Animação entre telas -->
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-left">
+          <h1>Bem-vindo de volta!</h1>
+          <p>Para continuar conectado, entre com seus dados</p>
+          <button class="ghost" id="signIn" aria-label="Ir para tela de login">Entrar</button>
+        </div>
+        <div class="overlay-panel overlay-right">
+          <h1>Olá, novo por aqui?</h1>
+          <p>Cadastre-se e comece sua jornada conosco!</p>
+          <button class="ghost" id="signUp" aria-label="Ir para tela de cadastro">Cadastrar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Botão móvel dentro do quadro -->
+    <button id="mobileToggle" class="mobile-toggle" aria-label="Alternar para tela de cadastro">Cadastre-se</button>
+  </div>
+
+  <script src="js/index.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>

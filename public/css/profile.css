@@ -1,0 +1,299 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Rose:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+body {
+  font-family: 'red rose', sans-serif;
+  background-color:#1F2937;
+  color: #F9FAFB;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, #2c5364, #203a43, #0f2027);
+  padding: 0 50px;
+  z-index: 1000;
+}
+
+.logo {
+  height: 80px;
+}
+
+#logout {
+  background: #059669;
+  color: white;
+  font-size: 16px;
+  padding: 10px 15px;
+  border-radius: 30px;
+  border: none;
+  font-family: 'Red Rose', serif;
+  cursor: pointer;
+}
+
+.popup {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #059669;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 4px;
+  transition: transform 0.5s ease, opacity 0.3s ease;
+  opacity: 0;
+  pointer-events: auto;
+  z-index: 9999;
+  pointer-events: auto;
+  transform: translateX(100%);
+}
+
+.popup.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Conteúdo principal */
+.main-content {
+  flex: 1;
+  padding: 10rem;
+}
+
+.header-tarefas {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  margin-left: 70px;
+}
+
+.header-tarefas h2 {
+  font-family: 'Red Rose', sans-serif;
+  font-size: 1.5rem;
+  font-weight: lighter;
+}
+
+/* Botão nova tarefa */
+.btn-gotasks {
+  background-color: #059669;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  margin-right: 70px;
+  font-weight: bold;
+  font-family: 'Red Rose', sans-serif;
+  font-size: 12px;
+  color: white;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+/* Grid de tarefas */
+.tarefas-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1455px;
+  margin: 0 auto; /* centraliza horizontalmente */
+}
+
+
+.titulo-tarefa {
+  color: #1F2937;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.descricao-tarefa,
+.prioridade-tarefa,
+.status-tarefa {
+  margin: 0.35rem 0;
+  font-size: 0.85rem;
+  color: #1F2937;
+}
+
+
+.card-tarefa {
+  position: relative; /* contexto para o posicionamento absoluto */
+  padding: 1rem;
+  background-color: aliceblue;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.75);
+}
+
+.edit-icon {
+  position: absolute;
+  top: 50%;         /* verticalmente no meio */
+  right: 0;         /* colado na borda direita */
+  transform: translate(50%, -50%); /* ajusta para ficar meio "para fora" do card */
+  padding: 5px;
+  fill: #ffffff;
+  background: #1F2937;
+  cursor: pointer;
+  transition: fill 0.3s;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%; /* opcional, deixa o fundo arredondado */
+}
+
+
+.edit-icon:hover {
+  fill: #d3f2ff; /* cor no hover */
+}
+
+/* Rodapé */
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: linear-gradient(135deg, #2c5364, #203a43, #0f2027);
+  padding: 10px;
+  border-top-left-radius: 45px;
+  border-top-right-radius: 45px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.footer-logo {
+  height: 80px;
+
+}
+
+.footer-line {
+  border: none;
+  border-top: 1px solid white;
+  width: 300px;
+  margin: 3px auto;
+}
+
+.credits {
+  margin-top: 10px;
+  font-family: 'Red Rose', serif;
+  font-size: 14px;
+}
+/* Responsive adjustments for profile page */
+@media (max-width: 1200px) {
+  .tarefas-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .header-tarefas {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .header-tarefas h2 {
+    margin-bottom: 1rem;
+  }
+
+  .btn-gotasks {
+    align-self: flex-start; /* Align button to the start on smaller screens */
+    margin-left: 0; /* Adjust margin if header-tarefas has padding */
+    margin-right: 0;
+    padding: 0.75rem 1rem; /* Slightly adjust padding for smaller screens */
+    font-size: 11px; /* Adjust font size for smaller buttons */
+  }
+
+  .tarefas-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 0 20px; /* Add padding to the grid container */
+  }
+
+  .main-content {
+    padding: 8rem 1rem 1rem 1rem; /* Adjust padding for smaller screens */
+  }
+
+  .edit-icon {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 0 20px; /* Adjust header padding */
+  }
+  .logo {
+    height: 60px; /* Adjust logo size */
+  }
+  #logout {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+  .tarefas-grid {
+    grid-template-columns: 1fr; /* Stack cards in a single column */
+  }
+
+  .card-tarefa {
+    padding: 0.8rem;
+  }
+
+  .titulo-tarefa {
+    font-size: 1.1rem;
+  }
+
+  .descricao-tarefa,
+  .prioridade-tarefa,
+  .status-tarefa {
+    font-size: 0.8rem;
+  }
+
+  .edit-icon {
+    width: 24px;
+    height: 24px;
+    /* Adjust position if necessary for single column layout */
+    transform: translate(30%, -50%);
+  }
+
+  .footer-logo {
+    height: 60px;
+  }
+
+  .footer-line {
+    width: 250px;
+  }
+
+  .credits {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content {
+    padding-top: 7rem;
+  }
+  .header-tarefas h2 {
+    font-size: 1.3rem;
+  }
+  .btn-gotasks {
+    padding: 0.6rem 0.9rem;
+    font-size: 10px;
+  }
+  .edit-icon {
+    transform: translate(20%, -50%);
+  }
+}
+

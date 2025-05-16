@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Organix - Editar Tarefa</title>
+  <link rel="stylesheet" href="css/private.css" />
+</head>
+<body>
+  <header class="header" role="banner">
+    <img src="img/Organix.png" alt="Logo Organix" class="logo">
+    <button id="logout" aria-label="Sair da conta">Sair</button>
+  </header>
+
+  <nav id="breadcrumb" aria-label="Navegação estrutural" role="navigation"></nav>
+
+<main role="main">
+  <h1 class="task-title">Editar Tarefa</h1>
+
+  <div class="cards-container">
+    <!-- Linha 1: Descrição -->
+    <div class="card">
+      <h2>Descrição</h2>
+      <label for="task-description" class="sr-only">Descrição da Tarefa</label>
+      <div class="card-content" id="task-description" contenteditable="false" aria-label="Descrição da tarefa, editável ao clicar em Editar"></div>
+      <button class="btn-save" id="btn-edit-desc" aria-label="Editar descrição da tarefa">Editar</button>
+    </div>
+
+    <!-- Linha 2: Prioridade e Status -->
+    <div class="card-row">
+      <div class="card">
+        <h2>Prioridade</h2>
+        <label for="priority-select" class="sr-only">Prioridade da Tarefa</label>
+        <div class="card-content" aria-live="polite"></div> <!-- para mostrar texto quando não estiver editando -->
+        <select class="select-edit" id="priority-select" style="display:none;" aria-label="Selecionar prioridade da tarefa">
+            <!-- Options will be populated by JS -->
+        </select>
+        <button class="btn-save" id="btn-edit-priority" aria-label="Editar prioridade da tarefa">Editar</button>
+      </div>
+
+      <div class="card">
+        <h2>Status</h2>
+        <label for="status-select" class="sr-only">Status da Tarefa</label>
+        <div class="card-content" aria-live="polite"></div> <!-- para mostrar texto quando não estiver editando -->
+        <select class="select-edit" id="status-select" style="display:none;" aria-label="Selecionar status da tarefa">
+            <!-- Options will be populated by JS -->
+        </select>
+        <button class="btn-save" id="btn-edit-status" aria-label="Editar status da tarefa">Editar</button>
+      </div>
+    </div>
+  </div>
+
+  <button class="btn-delete" id="btn-delete-task" aria-label="Excluir esta tarefa">Excluir Tarefa</button>
+</main>
+
+  <footer class="footer" role="contentinfo">
+    <img src="img/Organix.png" alt="Logo Organix no rodapé" class="footer-logo">
+    <hr class="footer-line" aria-hidden="true">
+    <p class="credits">© 2025 Organix. Desenvolvido por flxche.</p>
+  </footer>
+  <div id="popup" class="popup" role="alert" aria-live="assertive"></div>
+<div id="custom-confirm" class="confirm-modal hidden" role="dialog" aria-modal="true">
+  <div class="confirm-box">
+    <p>Tem certeza que deseja excluir esta tarefa?</p>
+    <div class="confirm-buttons">
+      <button id="confirm-yes" class="btn-yes">Sim</button>
+      <button id="confirm-no" class="btn-no">Não</button>
+    </div>
+  </div>
+</div>
+
+  <script src="js/private.js"></script>
+</body>
+</html>

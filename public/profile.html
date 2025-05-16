@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Organix | Minhas Tarefas</title>
+  <link rel="stylesheet" href="css/profile.css" />
+</head>
+<body>
+  <div id="popup" class="popup" role="alert" aria-live="assertive"></div>
+
+  <header class="header" role="banner">
+    <img src="img/Organix.png" alt="Logo Organix" class="logo">
+    <button id="logout" aria-label="Sair da conta">Sair</button>
+  </header>
+
+  <main class="main-content" role="main">
+    <div class="header-tarefas">
+      <h2>MINHAS TAREFAS</h2>
+      <button id="go-to-tasks" class="btn-gotasks" type="button" aria-label="Adicionar nova tarefa">NOVA TAREFA</button>
+    </div>
+    <div class="tarefas-grid" id="tasks-list" aria-label="Lista de tarefas" role="grid"></div>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <img src="img/Organix.png" alt="Logo Organix no rodapé" class="footer-logo">
+    <hr class="footer-line" aria-hidden="true">
+    <p class="credits">© 2025 Organix. Desenvolvido por flxche.</p>
+  </footer>
+  <div id="popup-message" class="popup-message"></div>
+  <script src="js/profile.js"></script>
+</body>
+</html>
