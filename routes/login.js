@@ -1,33 +1,39 @@
-const express = require('express');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const Usuario = require('../models/usuario');
+document.addEventListener("DOMContentLoaded", () => {
+  const formLogin = document.getElementById("formLogin");
 
+  formLogin.addEventListener("submit", async (event) => {
+    event.preventDefault();
 
-const router = express.Router();
+    const email = document.getElementById("email").value;
+    const senha = document.getElementById("senha").value;
 
-router.post('/login', async (req, res) => {
-  const { email, senha } = req.body;
+    try {
+      const response = await fetch("https://organix-rpmq.onrender.com/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, senha }),
+      });
 
-  try {
-    const usuario = await Usuario.findOne({ email });
-    if (!usuario) {
-      return res.status(400).json({ message: 'Usuário não encontrado' });
+      const data = await response.json();
+
+      if (!response.ok) {
+        alert(data.message || "Erro ao fazer login");
+        return;
+      }
+
+      // Salvar token no localStorage
+      localStorage.setItem("token", data.token);
+
+      // Redirecionar para a página profile.html
+      window.location.href = "profile.html";
+
+    } catch (error) {
+      console.error("Erro ao fazer login:", error);
+      alert("Erro ao fazer login, tente novamente mais tarde.");
     }
-
-    const senhaValida = await bcrypt.compare(senha, usuario.senha);
-    if (!senhaValida) {
-      return res.status(400).json({ message: 'Senha incorreta' });
-    }
-
-    // Gerar o token JWT
-    const token = jwt.sign({ id: usuario._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-
-    res.json({ token });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: 'Erro ao fazer login' });
-  }
+  });
 });
 
 module.exports = router;
